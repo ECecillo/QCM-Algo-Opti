@@ -1,0 +1,31 @@
+{
+  "name": "algo-opti-revision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ECecillo/Algo-opti-revision.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ECecillo/Algo-opti-revision/issues"
+  },
+  "homepage": "https://github.com/ECecillo/Algo-opti-revision#readme",
+  "dependencies": {
+    "@prisma/client": "^3.9.2",
+    "next": "^12.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^3.9.2"
+  }
+}

@@ -10,3 +10,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Definition du shéma à partir de la Doc : https://www.prisma.io/docs/concepts/components/prisma-schema/relations
+
+model Chapitre {
+  id   Int     @id @default(autoincrement())
+  name String
+  link String? // Lien vers le cours
+
+  Question Question[]
+}
+
+// 1 Question <---> 1 Chapitre
+model Question {
+  // PK
+  id    Int     @id @default(autoincrement()) // Id de la question.
+  title String // Titre de la question
+  image String? // Si on veut mettre l'image d'un exo ou autre on met un Path.
+  type  String // On en a besoin pour savoir le type de question (si on attend une entier,formule ou une phrase)
+
+  // Definition du lien entre Chapitre et Question.
+  chapitre   Chapitre @relation(fields: [chapitreId], references: [id])
+  // Foreign Key
+  chapitreId Int
+
+  // 1 Question <---> Plusieurs réponses.
+  Reponse Reponse[]
+}
+
+// 1 Réponse <---> 1 Question
+model Reponse {
+  // Primary Key
+  id          Int    @id @default(autoincrement())
+  description String
+  type        String // Redondant.
+
+  // Join sur Question.id et questionId lors de la récupération des réponses.
+  question   Question @relation(fields: [questionId], references: [id])
+  // FK
+  questionId Int
+}
